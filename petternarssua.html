@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petter Nars S. Sua | Personal Portfolio & Ministry</title>
+    <!-- FontAwesome for Branded Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Reset & Variable Design System */
+        :root {
+            --primary-color: #2980b9;
+            --primary-hover: #1f6391;
+            --dark-heading: #2c3e50;
+            --bg-body: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #444444;
+            --border-light: #eaeaea;
+            --accent-green: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #eef2f7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Container Entrance Animation */
+        .container {
+            max-width: 820px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Section Reveal Animation */
+        section {
+            margin-bottom: 35px;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        /* Profile Header & Glowing Avatar */
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .avatar-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 8px 20px rgba(41, 128, 185, 0.3);
+            animation: pulseGlow 3s infinite ease-in-out;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.06) rotate(2deg);
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            color: var(--dark-heading);
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+
+        /* Section Headers with Animated Left Accent Bar */
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            position: relative;
+            transition: padding-left 0.3s ease, color 0.3s ease;
+        }
+
+        section:hover h2 {
+            padding-left: 18px;
+            color: var(--primary-hover);
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.15rem;
+            margin: 18px 0 10px 0;
+        }
+
+        p, li {
+            font-size: 1.02rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        /* Custom Content Formatting */
+        .subtext {
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: -5px;
+            margin-left: 10px;
+            border-left: 2px solid #ddd;
+            padding-left: 12px;
+            transition: border-color 0.3s ease;
+        }
+
+        .subtext:hover {
+            border-color: var(--primary-color);
+        }
+
+        blockquote {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            margin: 20px 0;
+            padding: 15px 22px;
+            font-style: italic;
+            color: #555;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        blockquote:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        }
+
+        /* Interactive Grid Lists for Skills */
+        .skills-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .skills-list li {
+            background: #eef2f7;
+            padding: 12px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: #34495e;
+            margin: 0;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .skills-list li:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 18px rgba(41, 128, 185, 0.3);
+        }
+
+        /* Contact Grid Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .info-grid:hover {
+            border-color: #cbd5e1;
+        }
+
+        .info-item strong {
+            color: var(--dark-heading);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-item span {
+            display: block;
+            color: #555;
+        }
+
+        /* Animated Highlight Cards */
+        .highlight-card {
+            background: #fdfdfd;
+            border-left: 4px solid var(--accent-green);
+            padding: 18px;
+            margin-bottom: 14px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateX(6px);
+            box-shadow: 0 6px 18px rgba(39, 174, 96, 0.15);
+            background: #ffffff;
+        }
+
+        /* Shimmering Social Buttons */
+        .social-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 15px;
+        }
+
+        .btn-social {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 22px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        /* Button Light Shimmer Effect */
+        .btn-social::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .btn-social:hover::before {
+            left: 100%;
+        }
+
+        .btn-social:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .btn-facebook {
+            background-color: #1877f2;
+        }
+
+        .btn-github {
+            background-color: #24292e;
+        }
+
+        /* Animated Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        footer a {
+            position: relative;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 14px;
+            transition: color 0.3s ease;
+        }
+
+        footer a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        footer a:hover::after {
+            width: 100%;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(41, 128, 185, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(41, 128, 185, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(41, 128, 185, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="avatar-wrapper">
+                <img src="C:\Users\Administrator\Downloads\unnamed.png" alt="Petter Nars S. Sua" class="profile-img">
+            </div>
+            <h1>Petter Nars S. Sua</h1>
+            <p>Seminarian | Programer | Content Creator | Public Figure</p>
+        </header>
+
+        <!-- About Me Section -->
+        <section>
+            <h2>About Me</h2>
+            <p>Greetings! I am a seminarian of the Congregation of the Sons of Holy Mary Immaculate (FSMI).</p>
+            <p><strong>Roles & Community Engagement:</strong> Active Cyclist (S.N.T), Venturer Scout (BSP-Iloilo Confesor Council), Altar Knight, Choir Member, and Admin & Digital Ministry (SBAK).</p>
+        </section>
+
+        <!-- Core Skills Section -->
+        <section>
+            <h2>Good at</h2>
+            <ul class="skills-list">
+                <li>HTML5 & CSS3</li>
+                <li>Notepad++</li>
+                <li>JavaScript</li>
+                <li>Programming</li>
+                <li>Problem Solving</li>
+                <li>Teamwork</li>
+                <li>Public Speaking</li>
+                <li>Cycling</li>
+                <li>Track & Field</li>
+				<li>Camping</li>
+            </ul>
+        </section>
+
+        <!-- Education / Experience Section -->
+        <section>
+            <h2>Education & Scouting Milestones</h2>
+            
+            <p><strong>Rogationist Seminary College of Philosophy – Manila</strong> (2026 – Present)</p>
+            <p class="subtext">Higher Education / Philosophy Studies</p>
+            
+            <br>
+
+            <p><strong>Santa Barbara National Comprehensive High School – Iloilo</strong> (2022 – 2025)</p>
+            <p class="subtext">
+                Completed Grade 10 with Honors • Conduct Awardee<br>
+                <strong>Special Recognitions:</strong> BSP 18th National Jamboree (Passi City), BSP Survival Camp (Armada Locsin, Guimaras, Philippines), Ilonggo Scouters Contingent (12th National Jamboree, Tainan, Taiwan), Council Scouts Jamboree (Camp Hinilawod de Calinog, Iloilo), Philippine Contingent (33rd Asia-Pacific Regional Scout Jamboree, Zambales Philippines).
+            </p>
+        </section>
+
+        <!-- Ministry & Background -->
+        <section>
+            <h2>Ministry & Background</h2>
+            <p>
+                Sir Knight Petter Nars Sua (Sem. Petter Nars Sua) is an active, dedicated altar server with the <strong>Santa Barbara Altar Knights (SBAK)</strong> ministry at Santa Barbara Parish Church. He belongs to <strong>Batch 2025</strong> of SBAK, is a seminarian of the <em>Congregatio Filiorum Sanctae Mariae Immaculatae (FSMI)</em>, and serves actively with Youth for Christ (YFC).
+            </p>
+
+            <h3>Motivational Message to the Youth</h3>
+            <p>Petter frequently serves as an inspiration and mentor for incoming altar servers and YFC members, sharing this message:</p>
+            
+            <blockquote>
+                "To the young servers, do not be discouraged by waiting or challenges. Serve with sincerity and love. What you learn at the altar today will guide you in becoming a better person tomorrow."
+            </blockquote>
+        </section>
+
+        <!-- Featured Social Media Highlights -->
+        <section>
+            <h2>Featured Social Updates</h2>
+            <div class="highlight-card">
+                <strong>📸 Digital Ministry & Content Creation</strong>
+                <p>Sharing spiritual reflections, altar server ministry highlights, and youth engagement content through digital media platforms.</p>
+            </div>
+            <div class="highlight-card">
+                <strong>🚲 Scouting & Cycling Activities</strong>
+                <p>Documenting scouting jamborees, cycling routes (S.N.T), and community service adventures across the Philippines and abroad.</p>
+            </div>
+        </section>
+
+        <!-- Contact Info & Social Links Section -->
+        <section>
+            <h2>Contact & Social Profiles</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>📧 Email Address</strong>
+                    <span>petternars@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <strong>📍 Location</strong>
+                    <span>Iloilo, Philippines</span>
+                    <span>Parañaque, Philippines</span>
+                </div>
+            </div>
+
+            <h3>Connect with Me Directly</h3>
+            <div class="social-buttons">
+                <a href="https://www.instagram.com/_narzxysud?stkn=Nm03Ym4ycDR2bm80" target="_blank" rel="noopener" class="btn-social btn-instagram">
+                    <i class="fa-brands fa-instagram"></i> Instagram Profile
+                </a>
+                <a href="https://www.facebook.com/share/1DedPp2cYF/" target="_blank" rel="noopener" class="btn-social btn-facebook">
+                    <i class="fa-brands fa-facebook"></i> Facebook Profile
+                </a>
+                <a href="https://www.facebook.com/share/1CVGyGH5Ak/" target="_blank" rel="noopener" class="btn-social btn-facebook">
+                    <i class="fa-brands fa-facebook-f"></i> Facebook Page / Post
+                </a>
+             
+            </div>
+        </section>
+
+        <!-- Footer Links Section -->
+        <footer>
+            <a href="https://www.instagram.com/_narzxysud?stkn=Nm03Ym4ycDR2bm80" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com/share/1DedPp2cYF/" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        </footer>
+    </div>
+
+</body>
+</html>
